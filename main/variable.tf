@@ -46,3 +46,14 @@ variable "cosmos_name" {
   default     = "raghumama121212cosmosdb"
 
 }
+variable "kv_secret_name" {
+  description = "keyvault_secret name"
+  type        = string
+  default     = "raghukvsecret"
+}
+variable "aks_name" {
+  description = "name of AKS cluster"
+  type        = string
+  default     = "raghakscluster"
+
+}

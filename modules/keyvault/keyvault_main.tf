@@ -19,14 +19,24 @@ resource "azurerm_key_vault" "key_vault" {
 
     key_permissions = [
       "Get",
+      
     ]
 
     secret_permissions = [
+      "Set",
       "Get",
+      "Delete",
+      "Purge",
+      "Recover"
     ]
 
     storage_permissions = [
       "Get",
     ]
   }
+}
+resource "azurerm_key_vault_secret" "key_vault" {
+  name         = var.kv_secret_name
+  value        = var.kv_secret_value
+  key_vault_id = azurerm_key_vault.key_vault.id
 }

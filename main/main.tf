@@ -37,11 +37,12 @@ module "function_app" {
   storage_account_access_key = module.storage_account.primary_access_key
 }
 module "key_vault" {
-  source     = "../modules/keyvault"
-  depends_on = [module.resource_group]
-  kv_name    = var.kv_name
-  rg_name    = var.rg_name
-  location   = var.location
+  source         = "../modules/keyvault"
+  depends_on     = [module.resource_group]
+  kv_name        = var.kv_name
+  kv_secret_name = var.kv_secret_name
+  rg_name        = var.rg_name
+  location       = var.location
 
 }
 module "cosmos_db" {
@@ -50,5 +51,16 @@ module "cosmos_db" {
   rg_name     = var.rg_name
   location    = var.location
   cosmos_name = var.cosmos_name
+
+}
+
+module "aks_cluster" {
+  source     = "../modules/aks"
+  depends_on = [module.resource_group]
+  aks_name   = var.aks_name
+  rg_name    = var.rg_name
+  location   = var.location
+
+
 
 }

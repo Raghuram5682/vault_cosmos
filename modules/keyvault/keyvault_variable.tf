@@ -15,3 +15,15 @@ variable "location" {
     default = ""
   
 }
+variable "kv_secret_name" {
+    description = "name of keyvault secret"
+    type=string
+    default = ""
+  
+}
+variable "kv_secret_value" {
+    description = "value"
+    type = string
+    default = "szechuan"
+  
+}
